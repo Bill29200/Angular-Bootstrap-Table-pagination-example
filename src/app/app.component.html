@@ -1,0 +1,24 @@
+<button class="btn btn-danger"(click)="getUser()" > Get Users</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Gender</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elt of data | paginate:{itemsPerPage:5,currentPage:page}">
+      <td>{{elt.gender}}</td>   
+      <td>{{elt.name.title}} {{elt.name.first}} {{elt.name.last}}</td>
+      <td>{{elt.email}}</td>
+      <td>
+         <img src="{{elt.picture.medium}}" alt=""></td>
+    </tr>
+  </tbody>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</table>
+<router-outlet></router-outlet>
+  
